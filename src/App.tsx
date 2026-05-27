@@ -464,7 +464,7 @@ export default function App() {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 h-full overflow-hidden bg-[#0B1120]">
         {/* Mobile Header */}
-        <header className="md:hidden bg-slate-900 border-b border-slate-800/50 text-white p-4 flex items-center shadow-lg sticky top-0 z-30">
+        <header className="md:hidden bg-slate-900 border-b border-slate-800/50 text-white py-2 px-4 flex items-center shadow-lg sticky top-0 z-30">
           <button 
             onClick={() => setIsSidebarOpen(true)} 
             className="p-1 mr-4 rounded-md hover:bg-slate-800 text-gray-300 transition-colors"

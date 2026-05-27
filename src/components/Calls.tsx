@@ -582,7 +582,7 @@ export function Calls({ socket, callType, setCallType, setActiveTab, autoJoin }:
 
 
   return (
-    <div className="flex-1 bg-[#0B1120] p-4 flex flex-col h-full overflow-hidden">
+    <div className="flex-1 bg-[#0B1120] pt-0 px-3 pb-3 sm:pt-0 sm:px-6 sm:pb-4 flex flex-col h-full overflow-hidden">
       <div className="max-w-6xl mx-auto w-full h-full flex flex-col">
         <div className="flex-1 flex flex-col space-y-4">
           {callType === 'video' ? (

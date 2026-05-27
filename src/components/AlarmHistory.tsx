@@ -28,9 +28,9 @@ export function AlarmHistory({ setActiveTab, history, onClearHistory }: AlarmHis
   };
 
   return (
-    <div className="flex-1 h-full bg-[#0B1120] text-white p-4 sm:p-8 overflow-y-auto">
+    <div className="flex-1 h-full bg-[#0B1120] text-white pt-2 px-3 pb-3 sm:pt-4 sm:px-6 sm:pb-6 overflow-y-auto">
       <div className="max-w-4xl mx-auto">
-        <div className="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-between mb-4 sm:mb-6 gap-4">
           <div className="flex items-center space-x-4">
             <div className="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center border border-slate-700/50">
               <History className="text-gray-300" size={24} />

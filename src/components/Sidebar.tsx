@@ -1,6 +1,7 @@
 import React from 'react';
 import { Home, MessageSquare, Phone, Users, Bell, Settings, Upload, History } from 'lucide-react';
 import { TabType } from '../types';
+import { AppLogo } from './AppLogo';
 
 interface SidebarProps {
   activeTab: TabType;
@@ -21,13 +22,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
   return (
     <div className="w-64 bg-white flex flex-col h-full border-r border-gray-200">
       <div className="p-4 pt-6 lg:pt-8 pb-8 border-b border-gray-100 flex items-center space-x-3">
-        <div className="relative w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center shadow-lg shadow-slate-200 overflow-hidden shrink-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-green-500/30 to-blue-500/30" />
-          <Phone className="text-green-500 relative z-10" size={24} />
-          <div className="absolute -top-1 -right-1 px-1.5 h-4 bg-orange-500 rounded-full border-2 border-white flex items-center justify-center tracking-tight font-black text-[7px] text-white">
-            LIVE
-          </div>
-        </div>
+        <AppLogo mode="badge" size={48} className="shrink-0" />
         <div className="flex-1 min-w-0">
           <h1 className="font-black text-slate-800 leading-tight tracking-tight text-lg uppercase leading-none mb-0.5">REDE İSU</h1>
           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">Network System v1.0</p>
@@ -77,9 +72,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
       <div className="p-4 border-t border-gray-200">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-medium">
-              I
-            </div>
+            <AppLogo mode="icon" size={32} className="shrink-0 border border-slate-200 rounded-full" />
             <div>
               <p className="text-sm font-medium text-gray-800">ISU 1971</p>
               <p className="text-xs text-green-500">Conectado</p>
