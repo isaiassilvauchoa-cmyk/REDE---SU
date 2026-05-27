@@ -1,0 +1,10 @@
+{
+  "name": "REDE İSU",
+  "description": "Comunicação interna de alta performance para redes locais (LAN), operando totalmente offline.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "screen-wake-lock"
+  ],
+  "majorCapabilities": []
+}
