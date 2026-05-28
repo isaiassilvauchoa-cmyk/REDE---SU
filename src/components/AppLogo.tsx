@@ -7,169 +7,110 @@ interface AppLogoProps {
 }
 
 export function AppLogo({ className = '', mode = 'icon', size }: AppLogoProps) {
-  if (mode === 'icon') {
-    const iconSize = size || 40;
-    return (
-      <svg
-        width={iconSize}
-        height={iconSize}
-        viewBox="0 0 100 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className={className}
-      >
-        {/* Outer Circular Glow */}
-        <circle cx="50" cy="50" r="46" fill="#0f172a" stroke="#1e293b" strokeWidth="2" />
-        
-        {/* Antennas */}
-        <path d="M 40 28 L 38 12" stroke="#64748b" strokeWidth="2.5" strokeLinecap="round" />
-        <circle cx="38" cy="11" r="2" fill="#22c55e" />
-        <path d="M 60 28 L 62 12" stroke="#64748b" strokeWidth="2.5" strokeLinecap="round" />
-        <circle cx="62" cy="11" r="2" fill="#22c55e" />
-
-        {/* Router Waves */}
-        <path d="M 36 38 A 18 18 0 0 1 64 38" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" fill="none" className="animate-pulse" />
-        <path d="M 41 43 A 11 11 0 0 1 59 43" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" fill="none" />
-        <circle cx="50" cy="48" r="1.5" fill="#22c55e" />
-
-        {/* Router Base */}
-        <rect x="30" y="48" width="40" height="12" rx="3" fill="#1e293b" stroke="#334155" strokeWidth="2" />
-        {/* Router LEDs */}
-        <circle cx="36" cy="54" r="1" fill="#ef4444" />
-        <circle cx="50" cy="54" r="1.5" fill="#22c55e" className="animate-ping" />
-        <circle cx="60" cy="54" r="1" fill="#22c55e" />
-        <circle cx="64" cy="54" r="1" fill="#22c55e" />
-
-        {/* Small Floating Device Dots */}
-        <circle cx="20" cy="70" r="1.5" fill="#22c55e" opacity="0.6" />
-        <path d="M 30 54 L 20 70 M 50 60 L 50 72 M 70 54 L 80 70" stroke="#475569" strokeWidth="1" strokeDasharray="2 2" />
-        <circle cx="50" cy="72" r="1.5" fill="#38bdf8" opacity="0.6" />
-        <circle cx="80" cy="70" r="1.5" fill="#eab308" opacity="0.6" />
-      </svg>
-    );
-  }
+  // Sizing defaults based on mode
+  const currentSize = size || (mode === 'icon' ? 44 : mode === 'badge' ? 48 : 140);
 
   if (mode === 'badge') {
-    const badgeSize = size || 48;
     return (
-      <div className={`relative flex items-center justify-center rounded-2xl bg-slate-950 border border-slate-800 p-1.5 shadow-xl ${className}`} style={{ width: badgeSize, height: badgeSize }}>
-        <AppLogo mode="icon" size={badgeSize - 12} />
-        <span className="absolute -top-1 -right-1 px-1.5 h-3.5 bg-green-500 rounded-full border border-slate-950 flex items-center justify-center tracking-tight font-black text-[6.5px] text-white">
+      <div className={`relative flex items-center justify-center rounded-2xl bg-[#090D1A] border border-slate-800/80 p-1 shadow-xl ${className}`} style={{ width: currentSize, height: currentSize }}>
+        <AppLogo mode="icon" size={currentSize - 10} />
+        <span className="absolute -top-1 -right-1 px-1.5 h-3.5 bg-blue-500 rounded-full border border-[#090D1A] flex items-center justify-center tracking-tight font-black text-[6.5px] text-white">
           LIVE
         </span>
       </div>
     );
   }
 
-  // Full detailed network diagram mode (100% vector-exact representations of the logo provided!)
-  const fullSize = size || 180;
+  // Standard icon or full modes render the beautifully crafted router vector icon.
+  const aspectHeight = currentSize * (154 / 168);
   return (
-    <div className={`flex flex-col items-center select-none ${className}`} style={{ width: fullSize }}>
+    <div className={`flex items-center justify-center select-none ${className}`} style={{ width: currentSize, height: aspectHeight }}>
       <svg
-        viewBox="30 10 160 151"
+        viewBox="16 20 168 154"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-auto"
+        className="w-full h-full"
       >
-        {/* Antennas */}
-        <path d="M 103 40 L 97 15" stroke="#475569" strokeWidth="2.5" strokeLinecap="round" />
-        <circle cx="97" cy="15" r="2.5" fill="#ef4444" />
-        
-        <path d="M 117 40 L 123 15" stroke="#475569" strokeWidth="2.5" strokeLinecap="round" />
-        <circle cx="123" cy="15" r="2.5" fill="#ef4444" />
+        {/* Antennas Feet/Supports - Deep Charcoal */}
+        <rect x="36" y="90" width="20" height="28" rx="5" fill="#4d4d4d" stroke="#2a2a2a" strokeWidth="1.5" />
+        <rect x="144" y="90" width="20" height="28" rx="5" fill="#4d4d4d" stroke="#2a2a2a" strokeWidth="1.5" />
 
-        {/* Concentric Green Wifi Waves */}
-        <path d="M 94 30 A 18 18 0 0 1 126 30" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" fill="none" className="animate-pulse" />
-        <path d="M 99 35 A 11 11 0 0 1 121 35" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" fill="none" />
-        <circle cx="110" cy="40" r="1.5" fill="#22c55e" />
+        {/* Antennas Masts - High contrast light-gray/silver */}
+        <rect x="38.5" y="22" width="15" height="68" rx="7.5" fill="#e5e7eb" stroke="#b5b7bb" strokeWidth="1" />
+        <rect x="146.5" y="22" width="15" height="68" rx="7.5" fill="#e5e7eb" stroke="#b5b7bb" strokeWidth="1" />
 
-        {/* Router Base Box */}
-        <rect x="90" y="40" width="40" height="10" rx="2" fill="#ffffff" stroke="#1e293b" strokeWidth="2" />
-        {/* Router design detail LEDs */}
-        <circle cx="95" cy="45" r="1" fill="#ef4444" />
-        <rect x="105" y="44" width="10" height="1" fill="#111827" />
-        <circle cx="118" cy="45" r="1" fill="#22c55e" />
-        <circle cx="121" cy="45" r="1" fill="#22c55e" />
-        <circle cx="124" cy="45" r="1" fill="#22c55e" />
+        {/* Bottom Feet under the chassis */}
+        <rect x="28" y="160" width="22" height="12" rx="6" fill="#444444" />
+        <rect x="150" y="160" width="22" height="12" rx="6" fill="#444444" />
 
-        {/* Central Devices Column */}
-        {/* Smartphone */}
-        <g transform="translate(104, 58)">
-          <rect x="0" y="0" width="12" height="20" rx="2" fill="#1e293b" stroke="#475569" strokeWidth="1" />
-          <rect x="1.5" y="1.5" width="9" height="15" rx="1" fill="#22c55e" />
-          {/* Inner small UI boxes inside smartphone icon */}
-          <rect x="3" y="3" width="2" height="2" fill="#ffffff" opacity="0.8" />
-          <rect x="7" y="3" width="2" height="2" fill="#ef4444" opacity="0.8" />
-          <rect x="3" y="7" width="2" height="2" fill="#eab308" opacity="0.8" />
-          <rect x="7" y="7" width="2" height="2" fill="#3b82f6" opacity="0.8" />
-          <circle cx="6" cy="18" r="0.8" fill="#cccccc" />
+        {/* Main Chassis Body - Sleek dark gray anthracite */}
+        <rect x="18" y="118" width="164" height="42" rx="10" fill="#323337" stroke="#202123" strokeWidth="1.5" />
+
+        {/* Glowing Vibrant Blue Wifi Signal Waves */}
+        <g id="wifi-waves">
+          {/* Signal source dot */}
+          <circle cx="100" cy="106" r="8.5" fill="#1d8bf1" />
+
+          {/* Concentric Arc 1 (Small) */}
+          <path
+            d="M 85.3 91.3 A 20.8 20.8 0 0 1 114.7 91.3"
+            stroke="#1d8bf1"
+            strokeWidth="6"
+            strokeLinecap="round"
+            fill="none"
+          />
+
+          {/* Concentric Arc 2 (Medium) */}
+          <path
+            d="M 74.5 80.5 A 36 36 0 0 1 125.5 80.5"
+            stroke="#1d8bf1"
+            strokeWidth="6"
+            strokeLinecap="round"
+            fill="none"
+          />
+
+          {/* Concentric Arc 3 (Large) */}
+          <path
+            d="M 63.7 69.7 A 51.3 51.3 0 0 1 136.3 69.7"
+            stroke="#1d8bf1"
+            strokeWidth="6"
+            strokeLinecap="round"
+            fill="none"
+          />
         </g>
 
-        {/* Tablet Box with Text */}
-        <g transform="translate(94, 82)">
-          <rect x="0" y="0" width="32" height="21" rx="2" fill="#2dd4bf" stroke="#0f172a" strokeWidth="1.5" />
-          <text x="16" y="13" fill="#0f172a" fontSize="5" fontWeight="bold" textAnchor="middle" letterSpacing="0.2">TABLET</text>
-          <circle cx="16" cy="18" r="0.5" fill="#0f172a" />
-        </g>
+        {/* Vibrant Blue Faceplate nested inside upper part of chassis */}
+        <path
+          d="M 36 118 h 128 v 8 a 8 8 0 0 1 -8 8 H 44 a 8 8 0 0 1 -8 -8 Z"
+          fill="#1d8bf1"
+        />
 
-        {/* Laptop/Computador Box with Text */}
-        <g transform="translate(90, 112)">
-          <rect x="2" y="0" width="36" height="21" rx="2.5" fill="#475569" stroke="#0f172a" strokeWidth="1.5" />
-          <rect x="4" y="2" width="32" height="15" fill="#1e293b" />
-          <text x="20" y="11" fill="#ffffff" fontSize="4.5" fontWeight="bold" textAnchor="middle" letterSpacing="0.1">COMPUTADOR</text>
-          {/* Keyboard base */}
-          <path d="M 0 21 L 40 21 L 43 25 L -3 25 Z" fill="#334155" stroke="#0f172a" strokeWidth="1.2" strokeLinejoin="round" />
-          <line x1="16" y1="23" x2="24" y2="23" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round" />
-        </g>
+        {/* White Monospaced 'isu' text centered inside Blue Faceplate */}
+        <text
+          x="100"
+          y="131"
+          fill="#ffffff"
+          fontFamily="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
+          fontSize="17"
+          fontWeight="bold"
+          textAnchor="middle"
+          letterSpacing="2"
+        >
+          isu
+        </text>
 
-        {/* Connecting Lines (Dotted) */}
-        {/* Router to figures */}
-        <path d="M 88 56 L 70 87" stroke="#0f172a" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="3 3" />
-        <path d="M 132 56 L 150 87" stroke="#0f172a" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="3 3" />
+        {/* Custom Indicators Section under the Faceplate */}
+        {/* Status Line Bar */}
+        <rect x="46" y="143" width="79" height="4" rx="2" fill="#e5e7eb" opacity="0.9" />
 
-        {/* Green Character (Left) */}
-        <g transform="translate(35, 74)">
-          {/* Head */}
-          <circle cx="20" cy="20" r="11" fill="#39cb62" stroke="#2a9147" strokeWidth="0.5" />
-          {/* Neck */}
-          <rect x="18" y="29" width="4" height="4" fill="#39cb62" />
-          {/* Torso & arms */}
-          <path d="M 8 41 C 8 33, 32 33, 32 41 L 31 66 C 31 68, 9 68, 9 66 Z" fill="#39cb62" stroke="#2a9147" strokeWidth="0.5" />
-          {/* Left leg */}
-          <rect x="13" y="66" width="5" height="18" fill="#39cb62" />
-          <ellipse cx="12" cy="84" rx="6" ry="2.5" fill="#39cb62" />
-          {/* Right leg */}
-          <rect x="22" y="66" width="5" height="18" fill="#39cb62" />
-          <ellipse cx="23" cy="84" rx="6" ry="2.5" fill="#39cb62" />
-          {/* Left arm holding phone */}
-          <path d="M 10 40 Q -2 48 10 54 Q 20 48 24 50" fill="none" stroke="#39cb62" strokeWidth="4.5" strokeLinecap="round" />
-          {/* Right arm */}
-          <path d="M 30 40 Q 42 45 40 54 Q 30 52 28 50" fill="none" stroke="#39cb62" strokeWidth="4.5" strokeLinecap="round" />
-          {/* White smartphone details */}
-          <rect x="24" y="42" width="5" height="10" rx="1" fill="#ffffff" stroke="#475569" strokeWidth="0.5" transform="rotate(10 24 42)" />
-        </g>
+        {/* LED 1 Left: Power (Golden Amber/Orange) */}
+        <circle cx="36" cy="145" r="5" fill="#f59e0b" />
 
-        {/* Orange/Yellow Character (Right) */}
-        <g transform="translate(145, 74)">
-          {/* Head */}
-          <circle cx="20" cy="20" r="11" fill="#facd2d" stroke="#d5a522" strokeWidth="0.5" />
-          {/* Neck */}
-          <rect x="18" y="29" width="4" height="4" fill="#facd2d" />
-          {/* Torso & arms */}
-          <path d="M 8 41 C 8 33, 32 33, 32 41 L 31 66 C 31 68, 9 68, 9 66 Z" fill="#facd2d" stroke="#d5a522" strokeWidth="0.5" />
-          {/* Left leg */}
-          <rect x="13" y="66" width="5" height="18" fill="#facd2d" />
-          <ellipse cx="12" cy="84" rx="6" ry="2.5" fill="#facd2d" />
-          {/* Right leg */}
-          <rect x="22" y="66" width="5" height="18" fill="#facd2d" />
-          <ellipse cx="23" cy="84" rx="6" ry="2.5" fill="#facd2d" />
-          {/* Left arm */}
-          <path d="M 10 40 Q -2 45 0 54 Q 10 52 12 50" fill="none" stroke="#facd2d" strokeWidth="4.5" strokeLinecap="round" />
-          {/* Right arm holding phone */}
-          <path d="M 30 40 Q 42 48 30 54 Q 20 48 16 50" fill="none" stroke="#facd2d" strokeWidth="4.5" strokeLinecap="round" />
-          {/* White smartphone details */}
-          <rect x="12" y="43" width="5" height="10" rx="1" fill="#ffffff" stroke="#475569" strokeWidth="0.5" transform="rotate(-10 12 43)" />
-        </g>
+        {/* LED 2 Right: LAN Activity (Bright Green) */}
+        <circle cx="139" cy="145" r="5" fill="#22c55e" />
+
+        {/* LED 3 Right: Warning/External Connection (Vibrant Coral/Red) */}
+        <circle cx="152" cy="145" r="5" fill="#ef4444" />
       </svg>
     </div>
   );

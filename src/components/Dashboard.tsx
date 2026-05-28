@@ -38,9 +38,9 @@ export function Dashboard({
     <div className="flex-1 h-full overflow-y-auto bg-[#0B1120] text-white pt-0 px-3 pb-1 sm:pt-0 sm:px-6 sm:pb-2 flex flex-col items-center">
       
       {/* Header Profile */}
-      <div className="flex flex-col items-center mt-0 sm:mt-0 mb-1.5 text-center">
+      <div className="flex flex-col items-center mt-0 sm:mt-0 mb-0.5 text-center">
         {/* Beautiful Application Icon - full network topology diagram */}
-        <div className="relative mb-0.5 sm:mb-1 transition-transform hover:scale-105 duration-300">
+        <div className="relative mb-0.5 transition-transform hover:scale-105 duration-300">
           <div className="absolute inset-0 bg-gradient-to-b from-green-500/10 to-amber-500/10 rounded-full filter blur-xl opacity-40 animate-pulse" />
           <AppLogo mode="full" size={130} className="relative z-10" />
         </div>
@@ -175,7 +175,7 @@ export function Dashboard({
       </div>
 
       {/* Background & Lock Screen Settings Panel */}
-      <div className="w-full max-w-2xl bg-slate-900/40 border border-slate-800/80 rounded-2xl p-3 mb-2 mt-2 shadow-xl">
+      <div className="w-full max-w-2xl bg-slate-900/40 border border-slate-800/80 rounded-2xl p-2.5 sm:p-3 mb-1 mt-1 shadow-xl">
         <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 flex items-center space-x-2 px-1">
           <Clock size={15} className="text-blue-400 animate-pulse" />
           <span>Configuração para Tela Bloqueada e Segundo Plano</span>
@@ -291,7 +291,7 @@ export function Dashboard({
       </div>
 
       {/* Network Status */}
-      <div className="mt-2 mb-1.5 w-full max-w-2xl bg-[#1e293b] rounded-lg sm:rounded-xl p-2 shadow-lg border border-slate-700/30 px-4 flex items-center justify-between">
+      <div className="mt-1 mb-1 w-full max-w-2xl bg-[#1e293b] rounded-lg sm:rounded-xl p-2 shadow-lg border border-slate-700/30 px-4 flex items-center justify-between">
         <div className="flex items-center text-sm font-semibold text-white">
           <Wifi size={18} className="mr-2 text-[#22c55e]" />
           Rede
